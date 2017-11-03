@@ -15,9 +15,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml', '~> 5.0', '>= 5.0.4'
+gem 'font-awesome-sass'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
