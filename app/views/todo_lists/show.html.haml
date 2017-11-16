@@ -1,8 +1,9 @@
 %h2.todo_list_title
   = @todo_list.title
 
-%p.todo_list_sub_title
-  = @todo_list.description
+.row
+  .col-md-4.col-md-offset-4
+    %p= simple_format(@todo_list.description)
 
 #todo_items_wrapper
   = render @todo_list.todo_items
