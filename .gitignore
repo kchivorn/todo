@@ -21,3 +21,4 @@
 /yarn-error.log
 
 .byebug_history
+/public/caches_page/localhost/*

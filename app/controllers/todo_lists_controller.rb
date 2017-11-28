@@ -1,5 +1,7 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  self.page_cache_directory = -> { Rails.root.join("public/caches_page", request.domain) }
+  caches_page :index, :show, :new, :edit
 
   def index
     @todo_lists = TodoList.all
@@ -31,15 +33,12 @@ class TodoListsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @todo_list.update(todo_list_params)
-        format.html { redirect_to @todo_list, notice: 'Todo list was successfully updated.' }
-        format.json { render :show, status: :ok, location: @todo_list }
+        #expire_page action: "show", id: params[:id]
+        redirect_to @todo_list, notice: 'Todo list was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @todo_list.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
