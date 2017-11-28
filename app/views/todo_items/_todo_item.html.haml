@@ -15,6 +15,8 @@
       .todo_item
         %p
           = todo_item.content
-    .trash
+    .options
+      = link_to edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true do
+        %i.fa.fa-pencil
       = link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } do
         %i.fa.fa-trash

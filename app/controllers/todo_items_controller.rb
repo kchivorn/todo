@@ -15,6 +15,18 @@ class TodoItemsController < ApplicationController
     @todo_item.update_attributes(completed_at: nil)
   end
 
+  def edit
+  end
+
+  def update
+    if @todo_item.update_attributes(todo_item_params)
+      flash[:success] = "Todo item was updated successfully."
+    else
+      flash[:error] = "Todo item could not be updated."
+    end
+    redirect_to @todo_list
+  end
+
   def destroy
     if @todo_item.destroy
       flash[:success] = "Todo list item was deleted."
