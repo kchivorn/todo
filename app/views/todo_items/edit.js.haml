@@ -1,1 +1,3 @@
-$('#form').html("#{escape_javascript(render partial: 'form')}")
+form = $('#form')
+form.html("#{escape_javascript(render partial: 'form')}")
+$('textarea:first').focus()
