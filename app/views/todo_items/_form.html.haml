@@ -1,3 +1,4 @@
 = form_for [@todo_list, @todo_item || @todo_list.todo_items.build] do |f|
-  = f.text_area :content, placeholder: "New Todo Item", autofocus: true
+  = f.text_area :content, placeholder: "New Todo Item", class: 'text-area', autofocus: true
+  = f.date_field :deadline, placeholder: 'Deadline', class: 'deadline'
   = f.submit

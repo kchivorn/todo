@@ -6,7 +6,7 @@
     %p= simple_format(@todo_list.description)
 
 #todo_items_wrapper
-  = render @todo_list.todo_items
+  = render @todo_items
   #form
     = render 'todo_items/form'
 
@@ -15,4 +15,4 @@
   |
   = link_to 'Delete', todo_list_path(@todo_list), method: :delete, data: {confirm: "Are you sure?" }
   |
-  = link_to 'Back', todo_lists_path
+  = link_to 'Home', todo_lists_path
