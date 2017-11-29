@@ -18,6 +18,7 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'font-awesome-sass'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'actionpack-page_caching'
+gem 'dalli'
 
 group :development, :test do
   gem 'pry-byebug'
