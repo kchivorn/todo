@@ -22,8 +22,8 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = true
-
-    config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
+    config.cache_store = :memory_store, { size: 128.megabytes }
+    #config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
   end
 
   # Don't care if the mailer can't send.
