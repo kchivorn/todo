@@ -22,3 +22,5 @@
 
 .byebug_history
 /public/caches_page/localhost/*
+.env
+/public/assets/*

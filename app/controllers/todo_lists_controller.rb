@@ -1,7 +1,7 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
-  self.page_cache_directory = -> { Rails.root.join("public/caches_page", request.domain) }
-  caches_page :index, :show, :new, :edit
+  # self.page_cache_directory = -> { Rails.root.join("public/caches_page", request.domain) }
+  # caches_page :show, :new, :edit
 
   def index
     @todo_lists = TodoList.all
