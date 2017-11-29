@@ -4,11 +4,15 @@ class TodoListsController < ApplicationController
   # caches_page :show, :new, :edit
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = Rails.cache.fetch("posts") {
+      TodoList.all
+    }
   end
 
   def show
-    @todo_items = @todo_list.todo_items.order('deadline')
+    @todo_items = Rails.cache.fetch("post") {
+      @todo_list.todo_items.order('deadline')
+    }
   end
 
   def new
