@@ -10,7 +10,7 @@ class TodoListsController < ApplicationController
   end
 
   def show
-    @todo_items = Rails.cache.fetch("post") {
+    @todo_items = Rails.cache.fetch(@todo_list.id) {
       @todo_list.todo_items.order('deadline')
     }
   end
