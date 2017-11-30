@@ -28,6 +28,15 @@ body {
     clear: both;
 }
 
+.header {
+  text-align: right;
+  padding: 20px -50px 40px 0;
+  margin: 40px -20px 50px 0;
+  a {
+    text-decoration: none;
+  }
+}
+
 #notice {
   text-align: center;
   font-size: 0.6em;
@@ -127,7 +136,7 @@ body {
   #form {
     margin-top: 2em;
     padding: 0 0;
-    textarea, input[type="date"] {
+    textarea, input[type="date"]{
       margin-right: 2%;
       display: inline-block;
       outline: none;
@@ -180,7 +189,7 @@ body {
 label {
   color: $dark;
 }
-input[type="text"], textarea {
+input[type="text"], textarea, input[type="email"], input[type="password"] {
   width: 100%;
   margin: .5em 2% 1em 0;
   display: inline-block;

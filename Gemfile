@@ -19,6 +19,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'actionpack-page_caching'
 gem 'dalli'
+gem 'devise'
 
 group :development, :test do
   gem 'pry-byebug'
