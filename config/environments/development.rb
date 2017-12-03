@@ -26,10 +26,20 @@ Rails.application.configure do
     #config.cache_store = :memory_store, { size: 128.megabytes }
     #config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
   end
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_USERNAME"],
+    domain: 'gmail.com'
+  }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
@@ -52,5 +62,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

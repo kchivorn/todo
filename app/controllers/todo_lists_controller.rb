@@ -25,14 +25,11 @@ class TodoListsController < ApplicationController
   def create
     @todo_list = TodoList.new(todo_list_params)
 
-    respond_to do |format|
-      if @todo_list.save
-        format.html { redirect_to @todo_list, notice: 'Todo list was successfully created.' }
-        format.json { render :show, status: :created, location: @todo_list }
-      else
-        format.html { render :new }
-        format.json { render json: @todo_list.errors, status: :unprocessable_entity }
-      end
+    if @todo_list.save
+      UsersMailer.inform_todolist(current_user.id, @todo_list.id)
+      redirect_to @todo_list, notice: 'Todo list was successfully created.'
+    else
+      render :new
     end
   end
 
