@@ -16,6 +16,6 @@ test:
 
 production:
   adapter: postgresql
-  pool: 20
+  pool: 22
   timeout: 5000
   database: todo_production
