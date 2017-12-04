@@ -1,29 +1,28 @@
-- cache todo_item do
-  %div{:id => "todo_item_#{todo_item.id}"}
-    .row.clearfix
-      - if todo_item.completed?
-        .complete
-          = link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
-            %i.fa.fa-check-square-o
-        .todo_item
-          %p
-            %strike
-              = todo_item.content
-              %span --
-              = todo_item.try(:deadline).try(:strftime, "%d/%b/%Y")
-
-      - else
-        .complete
-          = link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
-            %i.fa.fa-square-o
-        .todo_item
-          %p
+%div{:id => "todo_item_#{todo_item.id}"}
+  .row.clearfix
+    - if todo_item.completed?
+      .complete
+        = link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
+          %i.fa.fa-check-square-o
+      .todo_item
+        %p
+          %strike
             = todo_item.content
             %span --
             = todo_item.try(:deadline).try(:strftime, "%d/%b/%Y")
 
-      .options
-        = link_to edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true do
-          %i.fa.fa-pencil
-        = link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } do
-          %i.fa.fa-trash
+    - else
+      .complete
+        = link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
+          %i.fa.fa-square-o
+      .todo_item
+        %p
+          = todo_item.content
+          %span --
+          = todo_item.try(:deadline).try(:strftime, "%d/%b/%Y")
+
+    .options
+      = link_to edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true do
+        %i.fa.fa-pencil
+      = link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } do
+        %i.fa.fa-trash

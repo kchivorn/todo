@@ -1,18 +1,17 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
   # self.page_cache_directory = -> { Rails.root.join("public/caches_page", request.domain) }
-  # caches_page :show, :new, :edit
+  #caches_page :index
 
   def index
-    @todo_lists = Rails.cache.fetch("posts") {
-      TodoList.all
-    }
+    @todo_lists = TodoList.all
   end
 
   def show
-    @todo_items = Rails.cache.fetch(@todo_list.id) {
-      @todo_list.todo_items.order('deadline')
-    }
+    @todo_items = @todo_list.todo_items.order('deadline')
+    # @todo_items = Rails.cache.fetch(@todo_list.id) {
+    #   @todo_list.todo_items.order('deadline')
+    # }
   end
 
   def new

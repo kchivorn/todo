@@ -1,19 +1,18 @@
-- cache @todo_list do
-  %h2.todo_list_title
-    = @todo_list.title
+%h2.todo_list_title
+  = @todo_list.title
 
-  .row
-    .col-md-4.col-md-offset-4
-      %p= simple_format(@todo_list.description)
+.row
+  .col-md-4.col-md-offset-4
+    %p= simple_format(@todo_list.description)
 
-  #todo_items_wrapper
-    = render @todo_items
-    #form
-      = render 'todo_items/form'
+#todo_items_wrapper
+  = render @todo_items
+  #form
+    = render 'todo_items/form'
 
-  .links
-    = link_to 'Edit', edit_todo_list_path(@todo_list)
-    |
-    = link_to 'Delete', todo_list_path(@todo_list), method: :delete, data: {confirm: "Are you sure?" }
-    |
-    = link_to 'Home', root_path
+.links
+  = link_to 'Edit', edit_todo_list_path(@todo_list)
+  |
+  = link_to 'Delete', todo_list_path(@todo_list), method: :delete, data: {confirm: "Are you sure?" }
+  |
+  = link_to 'Home', root_path
