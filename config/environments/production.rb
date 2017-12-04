@@ -19,6 +19,19 @@ Rails.application.configure do
   #config.cache_store = :memory_store, { size: 128.megabytes }
   #config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
 
+  # Don't care if the mailer can't send.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"],
+    domain: 'gmail.com'
+  }
+  config.action_mailer.delivery_method = :smtp
+
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
   # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or
   # `config/secrets.yml.key`.

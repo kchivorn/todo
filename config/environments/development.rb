@@ -36,7 +36,7 @@ Rails.application.configure do
     port: '587',
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"],
     domain: 'gmail.com'
   }
   config.action_mailer.delivery_method = :smtp

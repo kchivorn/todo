@@ -25,7 +25,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.new(todo_list_params)
 
     if @todo_list.save
-      UsersMailer.inform_todolist(current_user.id, @todo_list.id)
+      UsersMailer.inform_todolist(current_user.id, @todo_list.id).deliver_now
       redirect_to @todo_list, notice: 'Todo list was successfully created.'
     else
       render :new
