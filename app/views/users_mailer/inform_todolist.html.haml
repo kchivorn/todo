@@ -1,4 +1,4 @@
-%h1= @todo_list.title
+%h1= @todo_list_title
 
-%p= @todo_list.description
-%p= link_to 'Read more', @todo_list
+%p= @todo_list_description
+%p= link_to 'Read more', todo_list_url(@todo_list_id) unless @action == 'delete'

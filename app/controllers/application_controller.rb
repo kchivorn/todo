@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
+  def send_mail
+    UsersMailer.inform_todolist(current_user.id, @todo_list.id, @todo_list.title, @todo_list.description, params[:action]).deliver_later
+  end
+
   private
 
   def after_sign_out_path_for(resource)

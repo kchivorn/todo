@@ -25,7 +25,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.new(todo_list_params)
 
     if @todo_list.save
-      UsersMailer.inform_todolist(current_user.id, @todo_list.id).deliver_later
+      send_mail
       redirect_to @todo_list, notice: 'Todo list was successfully created.'
     else
       render :new
@@ -33,16 +33,18 @@ class TodoListsController < ApplicationController
   end
 
   def update
-      if @todo_list.update(todo_list_params)
-        #expire_page action: "show", id: params[:id]
-        redirect_to @todo_list, notice: 'Todo list was successfully updated.'
-      else
-        render :edit
-      end
+    if @todo_list.update(todo_list_params)
+      send_mail
+      #expire_page action: "show", id: params[:id]
+      redirect_to @todo_list, notice: 'Todo list was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
     @todo_list.destroy
+    send_mail
     respond_to do |format|
       format.html { redirect_to todo_lists_url, notice: 'Todo list was successfully destroyed.' }
       format.json { head :no_content }

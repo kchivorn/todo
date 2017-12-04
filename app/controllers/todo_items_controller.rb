@@ -4,15 +4,18 @@ class TodoItemsController < ApplicationController
 
   def create
     @todo_item = @todo_list.todo_items.create todo_item_params
+    send_mail
     redirect_to @todo_list
   end
 
   def complete
     @todo_item.update_attributes(completed_at: Time.now)
+    send_mail
   end
 
   def uncomplete
     @todo_item.update_attributes(completed_at: nil)
+    send_mail
   end
 
   def edit
@@ -20,6 +23,7 @@ class TodoItemsController < ApplicationController
 
   def update
     if @todo_item.update_attributes(todo_item_params)
+      send_mail
       flash[:success] = "Todo item was updated successfully."
     else
       flash[:error] = "Todo item could not be updated."
@@ -29,12 +33,15 @@ class TodoItemsController < ApplicationController
 
   def destroy
     if @todo_item.destroy
+      send_mail
       flash[:success] = "Todo list item was deleted."
     else
       flash[:error] = "Todo List item could not be deleted."
     end
     redirect_to @todo_list
   end
+
+  private
 
   def set_todo_list
     @todo_list = TodoList.find(params[:todo_list_id])
