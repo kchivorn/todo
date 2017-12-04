@@ -13,7 +13,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.cache_store = :mem_cache_store
+  config.cache_store = :mem_cache_store, 'top-todo-list.herokuapp.com'
   #config.cache_store = :memory_store, { size: 128.megabytes }
   #config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
 
