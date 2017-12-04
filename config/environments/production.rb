@@ -20,6 +20,7 @@ Rails.application.configure do
   #config.cache_store = :file_store, "#{Rails.root}/public/caches_page"
 
   # Don't care if the mailer can't send.
+  config.action_mailer.default_url_options = { only_path: true }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
