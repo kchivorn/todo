@@ -10,10 +10,9 @@ class TodoListsController < ApplicationController
   end
 
   def show
-    @todo_items = @todo_list.todo_items.order('deadline')
-    # @todo_items = Rails.cache.fetch(@todo_list.id) {
-    #   @todo_list.todo_items.order('deadline')
-    # }
+    @todo_items = Rails.cache.fetch(@todo_list.id, expires_in: 3600) do
+      @todo_list.todo_items.order('deadline')
+    end
   end
 
   def new
