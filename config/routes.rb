@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :todo_lists do
     resources :todo_items do
       member do
-        patch :complete
-        patch :uncomplete
+        put :complete
+        put :uncomplete
       end
     end
   end

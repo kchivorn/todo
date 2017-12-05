@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def send_mail
-    UsersMailer.inform_todolist(current_user.id, @todo_list.id, @todo_list.title, @todo_list.description, params[:action]).deliver_later
+    UsersMailer.inform_todolist(current_user.id, @todo_list.id, @todo_list.title, @todo_list.description,
+      @todo_item.try(:content), params[:action]).deliver_later
   end
 
   private

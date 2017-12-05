@@ -1,4 +1,10 @@
-%h1= @todo_list_title
+- if @todo_item_content
+  %h1
+    = @todo_item_content
+    in
+    = @todo_list_title
+- else
+  %h1= @todo_list_title
 
 %p= @todo_list_description
 - unless @action == 'delete'

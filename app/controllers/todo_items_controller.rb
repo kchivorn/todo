@@ -1,6 +1,7 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_list
   before_action :set_todo_item, except: [:create]
+  after_action :send_mail, only: [:complete, :uncomplete]
 
   def create
     @todo_item = @todo_list.todo_items.create todo_item_params
@@ -10,7 +11,6 @@ class TodoItemsController < ApplicationController
 
   def complete
     @todo_item.update_attributes(completed_at: Time.now)
-    send_mail
   end
 
   def uncomplete

@@ -1,4 +1,8 @@
-<%= @todo_list_title %>
+<% if @todo_item_content %>
+  Item: <%= @todo_item_content %> in todo list: <%= @todo_list_title %>
+<% else %>
+  <%= @todo_list_title %>
+<% end %>
 
 <%= @todo_list_description %>
 <% unless @action == 'delete' %>
