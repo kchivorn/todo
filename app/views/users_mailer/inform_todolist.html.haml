@@ -1,4 +1,7 @@
 %h1= @todo_list_title
 
 %p= @todo_list_description
-%p= link_to 'Read more', todo_list_url(@todo_list_id) unless @action == 'delete'
+- unless @action == 'delete'
+  %p= link_to 'Read more', todo_list_url(@todo_list_id)
+- else
+  %p= link_to 'Go to home page', root_url

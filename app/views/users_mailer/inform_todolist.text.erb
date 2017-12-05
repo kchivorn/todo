@@ -1,4 +1,8 @@
 <%= @todo_list_title %>
 
 <%= @todo_list_description %>
-<%= link_to 'Read more', todo_list_url(@todo_list_id) unless @action == 'delete' %>
+<% unless @action == 'delete' %>
+  <%= link_to 'Read more', todo_list_url(@todo_list_id) %>
+<% else %>
+  <%= link_to 'Go to home page', root_url %>
+<% end %>
