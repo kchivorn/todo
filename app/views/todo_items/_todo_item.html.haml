@@ -2,7 +2,7 @@
   .row.clearfix
     - if todo_item.completed?
       .complete
-        = link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :put, remote: true do
+        = link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
           %i.fa.fa-check-square-o
       .todo_item
         %p
@@ -13,7 +13,7 @@
 
     - else
       .complete
-        = link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :put, remote: true do
+        = link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, remote: true do
           %i.fa.fa-square-o
       .todo_item
         %p
