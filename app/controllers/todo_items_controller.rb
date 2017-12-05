@@ -15,7 +15,6 @@ class TodoItemsController < ApplicationController
 
   def uncomplete
     @todo_item.update_attributes(completed_at: nil)
-    send_mail
   end
 
   def edit
