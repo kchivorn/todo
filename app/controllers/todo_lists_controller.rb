@@ -4,7 +4,9 @@ class TodoListsController < ApplicationController
   #caches_page :index
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = Rails.cache.fetch('posts', expires_in: 3600) do
+      TodoList.all
+    end
   end
 
   def show

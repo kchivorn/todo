@@ -1,4 +1,5 @@
-= render @todo_lists
+- cache @todo_lists do
+  = render @todo_lists
 
-.links
-  = link_to 'New Todo List', new_todo_list_path
+  .links
+    = link_to 'New Todo List', new_todo_list_path
